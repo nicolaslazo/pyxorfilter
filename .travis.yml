@@ -1,29 +1,30 @@
 language: python
-
 addons:
   apt:
     packages:
-      - build-essential
-
-
+    - build-essential
 python:
-  - 3.5
-  - 3.6
-  - 3.7
-  - 3.8
-  - nightly
-  - pypy3
-
+- 3.5
+- 3.6
+- 3.7
+- 3.8
+- nightly
+- pypy3
 matrix:
   fast_finish: true
   allow_failures:
-    - python: nightly
-
+  - python: nightly
 install:
-  - pip install nose
-
+- pip install nose
 script:
-  - python setup.py test
-
+- python setup.py test
 cache:
-  - pip
+- pip
+deploy:
+  provider: pypitest
+  username: __token__
+  password:
+    secure: YUtWU0i9jQW/9F5I/epfYY01gHLmvI2kybqGein3zCDIWmM8h8uA6+3IGY/9QgT50VAd4uft+wmJrM4sLFsgYi19wZ77q77S4zqVjegDwPDGw8o0A8Q4y5BJEZ6ye//DWVV9OVuo2aBLlgnHKnzLMPUwQMFzMuq2+BuIi4j9SBFile26u3qGlpcve8l2HozZ/k+D0ZlKbjaS2jXh9aq3+3xR2MqN1nth9OvsEUBqXihunMFYLxbtJ+6AeQg6gMzF6cg8GuGUFKJgo4ekNdGegnfTCNF5503UOObg/AbI1iK2dHVNGaU1IhysgHvyZWllQBd6CG2tn0y7LG8TbVxtf93bhasR8OsCuqGYLGr1mA9jr10hCWsGhuegqKwZbQIFJvrecOT+vQJ7vHB7IioG70pu/jOQhXjS6STclJnFav34ijKTgv+AQVyahYSsKhypnnofwp8jNWVqA4ur1blAHRF/xlvoWZAT/81nhGc+y2aeTESPLrhnmnUzJaVjF4xTKRs1MBvB5mXE7Pr+BLpqdi3jmz0QipVlcmz91tEWHuZoVLlm4k3SYWBhLWyWnPnhqZ5uJLWWrAfo/bZa+D0MAc40rvKJiaKVDDTblfQUeJauwwnPOkjG/Tk13Ki54Vidp2M0tp3PlvpalYpWOb14OAcjifV2aXjKyVdfdjjJNl4=
+  on:
+    tags: true
+    branch: master
